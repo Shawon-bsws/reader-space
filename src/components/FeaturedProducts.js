@@ -6,7 +6,7 @@ function FeaturedProducts() {
     <section className='section ftSection'>
       <div className='title'>
         <h2>featured books</h2>
-        <div class='title-underline'></div>
+        <div className='title-underline'></div>
       </div>
       <div className='section-center featured'>
         <Product />

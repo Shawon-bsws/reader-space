@@ -1,30 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import { AmountButtons } from '../components';
+import { fetchData, fetchSingleProduct } from '../slice/products_slice';
 
 function ProductPage() {
+  const { single_product } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const params = useParams();
+
+  useEffect(() => {
+    dispatch(fetchSingleProduct(params.productId));
+  }, [params]);
+
+  const { id, bookName, author, genre, detail, image, price } = single_product;
+
   return (
     <section className='section section-center page'>
       <Link to={'/Products'} className='btn'>
         back to products
       </Link>
       <section className='product-center'>
-        <div className='product-img'>
-          <img src='#' alt='#' />
+        <div>
+          <img src={image} alt={bookName} />
         </div>
         <section className='content'>
-          <h2>item title</h2>
-          <h4 className='price'>$15</h4>
-          <p className='desc'>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad est
-            ratione, assumenda sit quas eaque eos impedit voluptates fugiat
-            deleniti odit doloremque dicta porro ut?
+          <h2>{bookName}</h2>
+          <h4 className='price'>${price}</h4>
+          <p className='desc'>{detail}</p>
+          <p className='info'>
+            <span>Author : </span>
+            {author}
           </p>
           <p className='info'>
-            <span>Author : </span>author
-          </p>
-          <p className='info'>
-            <span>Genre : </span>genre
+            <span>Genre : </span>
+            {genre}
           </p>
           <hr />
           <section className='quantity'>
