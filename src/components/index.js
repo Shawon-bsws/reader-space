@@ -8,6 +8,7 @@ import CartButtons from './CartButtons';
 import CartHeader from './CartHeader';
 import CartItem from './CartItem';
 import CartTotal from './CartTotal';
+import AddToCart from './AddToCart';
 
 export {
   Navbar,
@@ -20,4 +21,5 @@ export {
   CartHeader,
   CartItem,
   CartTotal,
+  AddToCart,
 };

@@ -587,6 +587,13 @@ products
   grid-template-columns: 200px 1fr;
   font-weight: bold;
 }
+.empty {
+  text-align: center;
+}
+.empty h2 {
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
 
 @media screen and (min-width: 800px) {
   h1 {

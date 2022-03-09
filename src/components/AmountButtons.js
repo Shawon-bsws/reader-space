@@ -1,18 +1,18 @@
 import React from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
-function AmmountButtons() {
+function AmountButtons({ amount, increase, decrease }) {
   return (
     <div className='amount-btns'>
-      <button type='button' className='amount-btn'>
+      <button type='button' className='amount-btn' onClick={decrease}>
         <FaMinus />
       </button>
-      <h2 className='amount'>1</h2>
-      <button type='button' className='amount-btn'>
+      <h2 className='amount'>{amount}</h2>
+      <button type='button' className='amount-btn' onClick={increase}>
         <FaPlus />
       </button>
     </div>
   );
 }
 
-export default AmmountButtons;
+export default AmountButtons;

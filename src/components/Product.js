@@ -6,7 +6,7 @@ function Product({ id, image, bookName, price, author }) {
   return (
     <article className='product'>
       <div className='product-img'>
-        <img src={image} alt='#' className='img photo' />
+        <img src={image} alt={bookName} className='img photo' />
         <Link to={`/product/${id}`} className='link'>
           <IoSearchCircle />
         </Link>

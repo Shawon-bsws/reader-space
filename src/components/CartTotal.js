@@ -1,12 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function CartTotal() {
+  const { total } = useSelector((state) => state.cart);
   return (
     <section className='order-total'>
       <div>
         <article>
           <h5>
-            subtotal :<span>$15</span>
+            subtotal :<span>${total}</span>
           </h5>
           <p>
             shipping fee :<span>$5.34</span>
