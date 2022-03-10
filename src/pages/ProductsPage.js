@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Product } from '../components';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchData } from '../slice/products_slice';
+import { useSelector } from 'react-redux';
 
 function ProductsPage() {
   const { productsList } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [productsList]);
 
   return (
     <section className='section-center'>

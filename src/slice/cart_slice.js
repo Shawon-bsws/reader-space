@@ -1,12 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import { INCREMENT, DECREMENT } from '../actions';
+
+const getLocalStorage = () => {
+  let cart = localStorage.getItem('cart');
+  if (cart) {
+    return JSON.parse(localStorage.getItem('cart'));
+  } else {
+    return [];
+  }
+};
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    cart: [],
+    cart: getLocalStorage(),
     total: 0,
     amount: 0,
+    shipping: 0,
   },
   reducers: {
     addToCart: (state, action) => {
@@ -41,7 +52,7 @@ export const cartSlice = createSlice({
       state.cart = [];
     },
     getTotal: (state) => {
-      const { total, amount } = state.cart.reduce(
+      let { total, amount } = state.cart.reduce(
         (cartTotal, cartItem) => {
           const { price, amount } = cartItem;
           const itemTotal = price * amount;
@@ -55,8 +66,12 @@ export const cartSlice = createSlice({
           amount: 0,
         }
       );
+      total = parseFloat(total.toFixed(2));
+      let ship = (total / amount) * (0.25 * (amount / 2));
+
       state.amount = amount;
       state.total = total;
+      state.shipping = parseFloat(ship.toFixed(2));
     },
   },
 });

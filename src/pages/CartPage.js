@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CartHeader, CartItem, CartTotal } from '../components';
-import { clearCart, getTotal } from '../slice/cart_slice';
+import { clearCart } from '../slice/cart_slice';
 
 function CartPage() {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getTotal());
-  }, [cart]);
-
-  console.log(cart);
   if (cart.length === 0) {
     return (
       <div className='section section-center page empty'>

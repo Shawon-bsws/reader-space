@@ -14,6 +14,11 @@ export const links = [
     text: 'products',
     url: '/products',
   },
+  {
+    id: 4,
+    text: 'contact',
+    url: '/contact',
+  },
 ];
 
 export const heroMainImg =
